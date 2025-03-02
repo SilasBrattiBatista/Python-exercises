@@ -1,2 +1,2 @@
 # Python exercises
- Repositoria para estudo da linguagem Python
+ Repositorio voltado para minha evolução na linguagem de programação de Pyhton e Lógica de Programação.
