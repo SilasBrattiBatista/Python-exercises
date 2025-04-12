@@ -3,9 +3,10 @@
 
 def vogal(letra):
 
-    if letra in 'aeiou':
+    if letra in 'aeiouAEIOU':
         return True
     else:
         return False
     
 print(vogal('b'))
+print(vogal('A'))
