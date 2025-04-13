@@ -22,6 +22,7 @@ while sair != True:
     print('')
 
     if operacao == 'listar':
+        print('TAREFAS:')
         for item in lista_Tarefas:
             print(item)
         print('')
@@ -32,14 +33,18 @@ while sair != True:
         sair = True
 
     elif operacao == 'desfazer':
-        adicionar_Lista_Refazer = lista_Tarefas[-1]
-        lista_Refazer.append(adicionar_Lista_Refazer)
-        lista_Tarefas.pop()
+
+        if len(lista_Tarefas) == 0:
+            print('Nada a desfazer!')
+        else:
+            adicionar_Lista_Refazer = lista_Tarefas[-1]
+            lista_Refazer.append(adicionar_Lista_Refazer)
+            lista_Tarefas.pop()
 
     elif operacao == 'refazer':
 
         if len(lista_Refazer) == 0:
-            print('Não há nada para refazer!')
+            print('Nada a refazer!')
         else:
             adicionar_Lista_Tarefas = lista_Refazer[-1]
             lista_Tarefas.append(adicionar_Lista_Tarefas)
