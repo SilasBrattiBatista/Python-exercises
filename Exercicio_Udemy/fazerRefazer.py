@@ -8,7 +8,7 @@
  # desfazer = [] -> Refazer ['caminhar', 'fazer café']
  # refazer = todo ['fazer café']
  # refazer = todo ['fazer café', 'caminhar']
-
+import os
 
 
 lista_Tarefas = []
@@ -50,5 +50,8 @@ while sair != True:
             lista_Tarefas.append(adicionar_Lista_Tarefas)
             lista_Refazer.pop()
 
+    elif operacao == 'clear':
+        os.system('cls')
+        
     else:
         lista_Tarefas.append(operacao)
