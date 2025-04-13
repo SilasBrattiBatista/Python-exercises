@@ -52,6 +52,6 @@ while sair != True:
 
     elif operacao == 'clear':
         os.system('cls')
-        
+
     else:
         lista_Tarefas.append(operacao)
