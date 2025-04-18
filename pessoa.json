@@ -1,0 +1,17 @@
+[
+  {
+    "nome": "Silas",
+    "idade": 20,
+    "naturalidade": "Brasileiro"
+  },
+  {
+    "nome": "João",
+    "idade": 30,
+    "naturalidade": "Brasileiro"
+  },
+  {
+    "nome": "Maria",
+    "idade": 20,
+    "naturalidade": "Francesa"
+  }
+]
