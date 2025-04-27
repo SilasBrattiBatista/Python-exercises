@@ -1,11 +1,17 @@
 '''Você conhece o jogo do NIM? Nesse jogo, n peças são inicialmente dispostas numa mesa ou tabuleiro. Dois jogadores jogam  alternadamente, 
 retirando pelo menos 1 e no máximo m peças cada um. Quem tirar as últimas peças possíveis ganha o jogo.
 Existe uma estratégia para ganhar o jogo que é muito simples: ela consiste em deixar sempre múltiplos de (m+1) peças ao jogador oponente.'''
+def partida():
+    n = int(input('Digite a quantidade de peças no tabuleiro: '))
+    m = int(input('Digite a quantidade máxima de peças que podem ser retiradas: '))
+    x = (m + 1)
 
-n = int(input('Digite a quantidade de peças no tabuleiro: '))
-m = int(input('Digite a quantidade máxima de peças que podem ser retiradas: '))
+    if (n % x) == 0:
+        print('Você começa!')
+        n = usuario_escolhe_jogada(n, m)
+    else:
+        print('Computador começa!')
 
-x = (m + 1)
 
 def usuario_escolhe_jogada(n, m):
     jogadaInvalida = True 
@@ -27,8 +33,6 @@ def usuario_escolhe_jogada(n, m):
     n -= pecasTiradas
     return n
 
-
-print(usuario_escolhe_jogada(n, m))
-print(n)
+partida()
 
 #def computador_escolhe_jogada(n, m): 
