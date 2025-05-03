@@ -5,16 +5,15 @@ def usuario_escolhe_jogada(n, m):
 
     while True:
         pecasATirar = int(input('Quantas peças você vai tirar? '))
+        print()
 
         if pecasATirar > n or pecasATirar > m:
             print('Oops! Jogada inválida! Tente de novo')
+            print()
         else:   
-            pecasTiradas = pecasATirar  
-            print(f'Você tirou {pecasTiradas} peças')
-            n -= pecasTiradas
-            return n
+            pecasTiradas = pecasATirar
+            return pecasTiradas
 
-        
 
 
 def computador_escolhe_jogada(n, m):
@@ -24,58 +23,81 @@ def computador_escolhe_jogada(n, m):
     while True:
             
         if ((n - x) % x) == 0:
-            return n - x
+            return x
         elif (n - x) == 0:
-            return n - x
+            return x
         
         x -= 1
 
 
-def partida():
+def jogo():
 
-    print('Bem-vindo ao jogo do NIM! Escolha: ')
-
-    tipoPartida = int(input('1 - para jogar uma partida isolada \n2 - para jogar um campeonato 2'))
-
-    n = int(input('Digite a quantidade de peças no tabuleiro: '))
-    m = int(input('Digite a quantidade máxima de peças que podem ser retiradas: '))
+    n = int(input('Quantas peças? '))
+    m = int(input('Limite de peças por jogada? '))
+    print()
     x = (m + 1)
-    quemComeca = "Ninguem"
     contador = 0
 
     if (n % x) == 0:
-        print('Você começa!')
-        n = usuario_escolhe_jogada(n, m)
-        quemComeca = 'usuario'
+        print('Você começa!\n')
+        pecasTiradas = usuario_escolhe_jogada(n, m)
+        print(f'Você tirou {pecasTiradas} peças')
+        contador += 1
+        n -= pecasTiradas
+        print(f'Agora restam {n} peças no tabuleiro')
+        print()
     else:
-        print('Computador começa!')
-        n = computador_escolhe_jogada(n, m)
-        quemComeca = 'computador'
+        print('Computador começa!\n')
+        pecasTiradas = computador_escolhe_jogada(n, m)
+        print(f'O computador tirou {pecasTiradas} peças')
+        n -= pecasTiradas
+        print(f'Agora restam {n} peças no tabuleiro')
+        print()
 
-    while m != 0:
+    while n != 0:
 
-        if quemComeca == 'usuario':
-            n  = computador_escolhe_jogada(n, m)
-            quemComeca = 'nada'
-            contador += 0
-            print(n)
-        elif quemComeca == 'computador':
-            n = usuario_escolhe_jogada(n, m)
-            quemComeca = 'nada'
-            contador += 1
-            print(n)
-        else:
             contador += 1
 
             if (contador % 2) == 0:
-                n = computador_escolhe_jogada(n, m)
-                print(n)
+                pecasTiradas = computador_escolhe_jogada(n, m)
+                print(f'O computador tirou {pecasTiradas} peças')
+                n -= pecasTiradas
+                print(f'Agora restam {n} peças no tabuleiro')
+                print()
             else:
-                n = usuario_escolhe_jogada(n, m)
-                print(n)
-
+                pecasTiradas = usuario_escolhe_jogada(n, m)
+                print(f'Você tirou {pecasTiradas} peças')
+                n -= pecasTiradas
+                print(f'Agora restam {n} peças no tabuleiro')
+                print()
+    print('Fim do Jogo! O computador ganhou!')
+    print()
+            
         
 
 
 
+def partida():
+
+
+    print('Bem-vindo ao jogo do NIM! Escolha: ')
+
+    tipoPartida = int(input('1 - para jogar uma partida isolada \n2 - para jogar um campeonato '))
+    
+    if tipoPartida == 1:
+        jogo()
+    elif tipoPartida == 2:
+        print()
+        print('Você escolheu um campeonato!')
+        print()
+        
+        contador = 1
+        while contador < 3:
+            print(f'**** Rodada {contador} ****')
+            print()
+            jogo()
+            contador += 1
+
+
 #def computador_escolhe_jogada(n, m): 
+partida()
