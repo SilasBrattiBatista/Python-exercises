@@ -2,21 +2,19 @@
 retirando pelo menos 1 e no máximo m peças cada um. Quem tirar as últimas peças possíveis ganha o jogo.
 Existe uma estratégia para ganhar o jogo que é muito simples: ela consiste em deixar sempre múltiplos de (m+1) peças ao jogador oponente.'''
 def usuario_escolhe_jogada(n, m):
-    jogadaInvalida = True 
 
-    while jogadaInvalida:
+    while True:
         pecasATirar = int(input('Quantas peças você vai tirar? '))
 
-        if pecasATirar > n:
-            print('Oops! Jogada inválida! Tente de novo')
-        elif pecasATirar > m:
+        if pecasATirar > n or pecasATirar > m:
             print('Oops! Jogada inválida! Tente de novo')
         else:   
-            pecasTiradas = pecasATirar   
+            pecasTiradas = pecasATirar  
+            print(f'Você tirou {pecasTiradas} peças')
+            n -= pecasTiradas
+            return n
 
-    print(f'Você tirou {pecasTiradas} peças')
-    n -= pecasTiradas
-    return n
+        
 
 
 def computador_escolhe_jogada(n, m):
@@ -31,9 +29,14 @@ def computador_escolhe_jogada(n, m):
             return n - x
         
         x -= 1
-            
+
 
 def partida():
+
+    print('Bem-vindo ao jogo do NIM! Escolha: ')
+
+    tipoPartida = int(input('1 - para jogar uma partida isolada \n2 - para jogar um campeonato 2'))
+
     n = int(input('Digite a quantidade de peças no tabuleiro: '))
     m = int(input('Digite a quantidade máxima de peças que podem ser retiradas: '))
     x = (m + 1)
@@ -55,17 +58,21 @@ def partida():
             n  = computador_escolhe_jogada(n, m)
             quemComeca = 'nada'
             contador += 0
+            print(n)
         elif quemComeca == 'computador':
             n = usuario_escolhe_jogada(n, m)
             quemComeca = 'nada'
             contador += 1
+            print(n)
         else:
             contador += 1
 
             if (contador % 2) == 0:
                 n = computador_escolhe_jogada(n, m)
+                print(n)
             else:
-                n = computador_escolhe_jogada(n, m)
+                n = usuario_escolhe_jogada(n, m)
+                print(n)
 
         
 
