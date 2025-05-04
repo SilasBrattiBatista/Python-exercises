@@ -18,11 +18,11 @@ def usuario_escolhe_jogada(n, m):
 
 def computador_escolhe_jogada(n, m):
 
-    x = (m + 1)
+    x = m
 
     while True:
             
-        if ((n - x) % x) == 0:
+        if ((n - x) % (m + 1)) == 0:
             return x
         elif (n - x) == 0:
             return x
@@ -85,6 +85,7 @@ def partida():
     tipoPartida = int(input('1 - para jogar uma partida isolada \n2 - para jogar um campeonato '))
     
     if tipoPartida == 1:
+        print()
         jogo()
     elif tipoPartida == 2:
         print()
@@ -92,11 +93,16 @@ def partida():
         print()
         
         contador = 1
-        while contador < 3:
+        while contador < 4:
             print(f'**** Rodada {contador} ****')
             print()
             jogo()
+            print()
             contador += 1
+        
+        print('**** Final do Campeonato! ****')
+        print()
+        print('Placar: Você 0 x 3 Computador')
 
 
 #def computador_escolhe_jogada(n, m): 
