@@ -36,13 +36,51 @@ Só será possível sacar se passar na autenticação do banco (descrita acima)
 Banco autentica por um método.
 """
 
-from abc import ABC, abstractclassmethod
+from abc import ABC, abstractclassmethod, abstractmethod
 
-class Conta(ABC):
+class Conta:
     
-    def __init__(self, valorConta):
-        self.valorConta = valorConta
-    
-    @abstractclassmethod
+    def __init__(self, saldo):
+        self.saldo = saldo
+        
+    @abstractmethod
     def sacar(self, valor):
-        self.valor -= valor
+        self.saldo -= valor
+        
+    @abstractmethod
+    def depositar(self, valor):
+        novoValor = += valor
+        
+    def setSaldo(self, valor):
+        self.saldo = valor
+        
+    def getSaldo(self):
+        return self.saldo
+
+class ContaCorrente(Conta):
+    
+    def sacar(self, valor):
+        if ((self.saldo - valor) < -300):
+            print("Valor insuficiente para sacar")
+        else:
+            self.saldo -= valor
+            
+    def depositar(self, valor):
+        self.saldo += valor
+    
+class ContaPoupanca(Conta):
+    ...
+
+c1 = ContaCorrente(1000)
+
+
+print(c1.saldo)
+c1.sacar(500)
+
+print(c1.saldo)
+c1.sacar(700)
+
+print(c1.saldo)
+
+c1.depositar(200)
+print(c1.saldo)
