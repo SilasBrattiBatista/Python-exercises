@@ -40,22 +40,23 @@ from abc import ABC, abstractclassmethod, abstractmethod
 
 class Conta:
     
-    def __init__(self, saldo):
+    def __init__(self, saldo, agencia, numeroConta):
         self.saldo = saldo
+        self.agencia = agencia
+        self.numeroConta = numeroConta
         
     @abstractmethod
     def sacar(self, valor):
         self.saldo -= valor
+        self.detalhes()
         
-    @abstractmethod
     def depositar(self, valor):
-        novoValor = += valor
+        self.saldo += valor
+        self.detalhes()
         
-    def setSaldo(self, valor):
-        self.saldo = valor
+    def detalhes(self, msg=''):
+        print(f"O saldo atual é {self.saldo} {msg}")
         
-    def getSaldo(self):
-        return self.saldo
 
 class ContaCorrente(Conta):
     
