@@ -2,21 +2,21 @@ from abc import ABC, abstractmethod
 
 class Conta:
     
-    def __init__(self, saldo, agencia, numeroConta):
+    def __init__(self, saldo: float, agencia: int, numeroConta: int) -> None:
         self.saldo = saldo
         self.agencia = agencia
         self.numeroConta = numeroConta
         
     @abstractmethod
-    def sacar(self, valor):
+    def sacar(self, valor: float) -> None:
         self.saldo -= valor
         self.detalhes()
         
-    def depositar(self, valor):
+    def depositar(self, valor: float) -> None:
         self.saldo += valor
         self.detalhes()
         
-    def detalhes(self, msg=''):
+    def detalhes(self, msg: str =''):
         print(f"O saldo atual é {self.saldo} {msg}")
         
 class ContaPoupanca(Conta):
