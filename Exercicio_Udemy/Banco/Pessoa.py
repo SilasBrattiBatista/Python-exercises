@@ -19,5 +19,7 @@ class Pessoa:
     def idade(self, idade: int):
         self._idade = idade
     
-        
+    
+class Cliente(Pessoa):
+    ...    
     
