@@ -27,3 +27,24 @@ class ContaPoupanca(Conta):
             print("Valor insuficiente para saque")
         else:
             self.saldo -= valor
+            
+class ContaCorrente(Conta):
+    
+    def __init__(self, saldo, agencia, numeroConta, saqueLimite):
+        super().__init__(saldo, agencia, numeroConta)
+        self.saqueLimite = saqueLimite
+    
+    def sacar(self, valor):
+        
+        if (self.saldo - valor) < self.saqueLimite:
+            print("Valor insuficiente para saque")
+            return ""
+        
+        self.saldo -= valor
+        self.detalhes()
+        
+c1 = ContaCorrente(100, 12, 13, -300)
+
+c1.depositar(100)
+c1.sacar(300)
+c1.sacar(300)
