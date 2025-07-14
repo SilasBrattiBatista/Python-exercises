@@ -38,7 +38,7 @@ class ContaCorrente(Conta):
         
         if (self.saldo - valor) <= -self.saqueLimite:
             print("Valor insuficiente para saque")
-            return ""
+            return self.saldo
         
         self.saldo -= valor
         self.detalhes()
