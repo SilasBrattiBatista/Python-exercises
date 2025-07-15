@@ -1,3 +1,5 @@
+import Conta
+
 class Pessoa:
     def __init__(self, nome: str, idade: int):
         self.nome = nome
@@ -21,5 +23,7 @@ class Pessoa:
     
     
 class Cliente(Pessoa):
-    ...    
+    def __init__(self, nome: str, idade: int):
+        super().__init__(nome, idade)
+        self.conta: Conta.Conta | None = None
     
