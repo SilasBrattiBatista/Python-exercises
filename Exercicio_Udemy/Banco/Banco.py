@@ -7,4 +7,3 @@ class Banco:
         self.conta: Conta.Conta = conta
         self.cliente: Cliente.Cliente = cliente
         
-    
