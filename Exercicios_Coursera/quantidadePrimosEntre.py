@@ -23,11 +23,11 @@ def n_primos(n) -> None:
     qtd_primo: int = 0
     
     while contador <= n:
-        if ePrimo(n):
+        if ePrimo(contador):
             qtd_primo += 1
             
         contador += 1
         
     print(qtd_primo)
 
-n_primos(2)
+n_primos(121)
