@@ -30,4 +30,4 @@ def n_primos(n) -> None:
         
     print(qtd_primo)
 
-n_primos(121)
+n_primos(24)
